@@ -1,0 +1,21 @@
+init-db=true
+
+################### Hibernate Configuration ##########################
+
+hibernate.connection.driver_class=com.mysql.jdbc.Driver
+hibernate.connection.url=jdbc:mysql://localhost:3306/SCABD?characterEncoding=utf-8
+hibernate.connection.username=sca_usr
+hibernate.connection.password=SCA@2010
+hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+hibernate.show_sql=false
+
+hibernate.connection.validation_query=SELECT 1
+
+################### JavaMail Configuration ##########################
+smtp.host=smtp.gmail.com
+smtp.port=465
+smtp.protocol=smtps
+smtp.username=edubezerra@gmail.com
+smtp.password=
+
+support.email=edubezerra@gmail.com

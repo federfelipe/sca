@@ -39,7 +39,7 @@ public class ItemHorario {
 	public String getInicio() {
 		return this.tempoAula.getInicio();
 	}
-
+	
 	public boolean colide(ItemHorario item) {
 		return this.tempoAula.colide(item.tempoAula);
 	}

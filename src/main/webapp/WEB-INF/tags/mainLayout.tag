@@ -202,6 +202,9 @@ body {
 								<li><a
 									href="${pageContext.request.contextPath}/monografias/blacklist/">
 										Blacklist de tags em monografias </a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/alocacaoHorario/definirTabela/">
+										Alocação de Turmas </a></li>
 							</ul></li>
 					</sec:authorize>
 

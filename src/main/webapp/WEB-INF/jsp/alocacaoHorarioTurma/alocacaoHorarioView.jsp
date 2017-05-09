@@ -25,7 +25,7 @@
 	<body>
 		<h1>Agora é só escrever a página aqui :)</h1>
 		<div class="tabela">
-			<table id="tabelaHorario">
+			<table id="tabelaHorario" border="1">
 				<thead>
 					<tr>
 						<td>Período da Disciplina</td>

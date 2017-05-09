@@ -49,7 +49,7 @@ public class AlocacaoHorarioController {
 	
 	@RequestMapping(value = "/definirTabela")
 	public String exibeMontarTabela() {
-		return "/alocacaoHorario/alocacaoHorarioView";
+		return "/alocacaoHorarioTurma/alocacaoHorarioView";
 		
 	}
 

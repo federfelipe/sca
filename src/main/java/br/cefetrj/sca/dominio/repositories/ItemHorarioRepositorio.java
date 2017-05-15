@@ -7,10 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import br.cefetrj.sca.dominio.ItemHorario;
-import br.cefetrj.sca.dominio.avaliacaoturma.AvaliacaoTurma;
+//import br.cefetrj.sca.dominio.avaliacaoturma.AvaliacaoTurma;
+
+/*public interface ItemHorarioRepositorio extends
+JpaRepository<AvaliacaoTurma, Serializable> {*/
 
 public interface ItemHorarioRepositorio extends
-JpaRepository<AvaliacaoTurma, Serializable> {
+JpaRepository<ItemHorario, Serializable> {
 	
 	@Query("SELECT item FROM itemhorario item WHERE item.id = ?1")
 	public ItemHorario getItemHorario(Long id);

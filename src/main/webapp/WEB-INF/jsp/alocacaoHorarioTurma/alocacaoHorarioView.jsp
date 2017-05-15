@@ -76,7 +76,7 @@
 			<input id="btnAdicionar" type="button" value="Adicionar">
 			<input id="btnSalvar" type="button" value="Salvar Grade">
 			<input id="btnGradesAnteriores" type="button" value="Grades Anteriores">
-			<input id="btnVoltar" type="button" value="Voltar">
+			<a class="btn btn-default" href="${pageContext.request.contextPath}/menuPrincipalView">Voltar</a>
 		</div>
 	</body>
 	

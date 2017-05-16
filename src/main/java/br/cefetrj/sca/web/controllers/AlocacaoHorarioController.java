@@ -1,15 +1,20 @@
 package br.cefetrj.sca.web.controllers;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import br.cefetrj.sca.dominio.Turma;
+import br.cefetrj.sca.dominio.usuarios.Usuario;
+import br.cefetrj.sca.service.AlocacaoHorarioService;
 import br.cefetrj.sca.service.AvaliacaoTurmaService;
 
 @Controller
@@ -21,6 +26,8 @@ public class AlocacaoHorarioController {
 
 	@Autowired
 	private AvaliacaoTurmaService service;
+	
+	private AlocacaoHorarioService alocahorarioservice; 
 
 	@RequestMapping(value = "/{*}", method = RequestMethod.GET)
 	public String get(Model model) {
@@ -48,7 +55,11 @@ public class AlocacaoHorarioController {
 	}
 	
 	@RequestMapping(value = "/definirTabela")
-	public String exibeMontarTabela() {
+	public String exibeMontarTabela(ModelMap model) {
+
+		List<Turma> turmas = alocahorarioservice.findAll();
+		model.addAttribute("turmas", turmas);
+
 		return "/alocacaoHorarioTurma/alocacaoHorarioView";
 		
 	}

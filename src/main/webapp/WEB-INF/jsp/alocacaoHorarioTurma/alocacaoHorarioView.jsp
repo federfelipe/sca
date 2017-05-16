@@ -80,4 +80,32 @@
 		</div>
 	</body>
 	
+	<br><br>
+	<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Login</th>
+						<th>Email</th>
+						<th>Data Criação</th>
+						<th width="100"></th>
+						<th width="100"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${turmas}" var="turma">
+						<tr>
+							<td>${turma.codigo}</td>
+							<td>${turma.ano}</td>
+							<td>${turma.periodo}</td>
+							<td><a href="<c:url value='/usuarios/edit-user-${turma.codigo}' />"
+								class="btn btn-success custom-width">editar</a></td>
+							<td><a href="<c:url value='/usuarios/delete-user-${turma.codigo}' />"
+								class="btn btn-danger custom-width">excluir</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+	
+	
 </html>

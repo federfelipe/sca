@@ -29,6 +29,7 @@ public interface TurmaRepositorio extends JpaRepository<Turma, Serializable> {
 	@Query("SELECT t from Turma t WHERE t.codigo = ?1 and t.disciplina = ?2 and t.periodo = ?3")
 	Turma findTurmaByCodigoAndDisciplinaAndPeriodo(String codigoTurma, Disciplina disciplina, PeriodoLetivo periodo);
 
+	@Query("SELECT t from Turma t WHERE t.id = ?1")
 	Turma findTurmaById(Long idTurma);
 	
 	@Query("SELECT a from AvaliacaoTurma a WHERE a.turmaAvaliada.id = ?1")

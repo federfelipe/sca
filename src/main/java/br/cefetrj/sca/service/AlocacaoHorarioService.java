@@ -17,8 +17,11 @@ import br.cefetrj.sca.dominio.repositories.ProfessorRepositorio;
 import br.cefetrj.sca.dominio.repositories.TurmaRepositorio;
 import br.cefetrj.sca.dominio.usuarios.Usuario;
 
+@Service
+@Transactional
 public class AlocacaoHorarioService {
 	
+	@Autowired
 	private TurmaRepositorio turmaRepositorio;
 	
 	private ItemHorarioRepositorio itemHorarioRepositorio;
@@ -47,8 +50,8 @@ public class AlocacaoHorarioService {
 	public List<Date> getHorariosInicio(List<ItemHorario> itensHorario) {
 		List<Date> horariosInicio = new ArrayList<Date>();
 		for(ItemHorario itemHorario : itensHorario) {
-			Date horaInicio = itemHorario.getHoraInicio();
-			horariosInicio.add(horaInicio);
+		/*	Date horaInicio = itemHorario.getHoraInicio();
+			horariosInicio.add(horaInicio);*/
 		}
 		return horariosInicio;
 	}
@@ -56,8 +59,8 @@ public class AlocacaoHorarioService {
 	public List<Date> getHorariosFim(List<ItemHorario> itensHorario) {
 		List<Date> horariosFim = new ArrayList<Date>();
 		for(ItemHorario itemHorario : itensHorario) {
-			Date horaFim = itemHorario.getHoraFim();
-			horariosFim.add(horaFim);
+		/*	Date horaFim = itemHorario.getHoraFim();
+			horariosFim.add(horaFim);*/
 		}
 		return horariosFim;
 	}

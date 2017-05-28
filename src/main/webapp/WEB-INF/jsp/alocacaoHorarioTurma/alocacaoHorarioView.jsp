@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	
@@ -76,8 +77,36 @@
 			<input id="btnAdicionar" type="button" value="Adicionar">
 			<input id="btnSalvar" type="button" value="Salvar Grade">
 			<input id="btnGradesAnteriores" type="button" value="Grades Anteriores">
-			<input id="btnVoltar" type="button" value="Voltar">
+			<a class="btn btn-default" href="${pageContext.request.contextPath}/menuPrincipalView">Voltar</a>
 		</div>
 	</body>
+	
+	<br><br>
+	<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Codigo</th>
+						<th>Periodo</th>
+						<th>Editar</th>
+						<th>Excluir</th>
+						<th width="100"></th>
+						<th width="100"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${turmas}" var="turma">
+						<tr>
+							<td>${turma.codigo}</td>
+							<%-- <td>${turma.ano}</td> --%>
+							<td>${turma.periodo}</td>
+							<td><a href="<c:url value='/usuarios/edit-user-${turma.codigo}' />"
+								class="btn btn-success custom-width">editar</a></td>
+							<td><a href="<c:url value='/usuarios/delete-user-${turma.codigo}' />"
+								class="btn btn-danger custom-width">excluir</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+	
 	
 </html>

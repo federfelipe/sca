@@ -3,10 +3,8 @@ package br.cefetrj.sca.dominio.repositories;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import br.cefetrj.sca.dominio.ItemHorario;
 
 public interface ItemHorarioRepositorio extends

@@ -15,7 +15,6 @@ import br.cefetrj.sca.dominio.repositories.ItemHorarioRepositorio;
 import br.cefetrj.sca.dominio.repositories.LocalAulaRepositorio;
 import br.cefetrj.sca.dominio.repositories.ProfessorRepositorio;
 import br.cefetrj.sca.dominio.repositories.TurmaRepositorio;
-import br.cefetrj.sca.dominio.usuarios.Usuario;
 
 @Service
 @Transactional

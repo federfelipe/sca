@@ -43,4 +43,17 @@ public class ItemHorario {
 	public boolean colide(ItemHorario item) {
 		return this.tempoAula.colide(item.tempoAula);
 	}
+	
+	// Metodo adicionado
+	public EnumDiaSemana getDia()
+	{
+		return this.dia;
+	}
+		
+	// Metodo adicionado
+	public void setDia(EnumDiaSemana dia)
+	{
+		this.dia = dia;
+	}
+	
 }

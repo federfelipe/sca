@@ -42,14 +42,14 @@ public class AlocacaoHorarioController {
 
 		List<Turma> turmas = alocaHorarioService.findAllTurmas();
 		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
-		List<Professor> professores = alocaHorarioService.findAllProfessores();
+//		List<Professor> professores = alocaHorarioService.findAllProfessores();
 //		List<String> horasInicio = alocaHorarioService.getAllHorasInicio();
 //		List<String> horasFim = alocaHorarioService.getAllHorasFim();
 		List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
 		
 		model.addAttribute("turmas", turmas);
 		model.addAttribute("disciplinas", disciplinas);
-		model.addAttribute("professores", professores);
+//		model.addAttribute("professores", professores);
 //		model.addAttribute("horasInicio", horasInicio);
 //		model.addAttribute("horasFim", horasFim);
 		model.addAttribute("diasSemana", diasSemana);

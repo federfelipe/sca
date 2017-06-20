@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.cefetrj.sca.dominio.Professor;
 
-public interface ProfessorRepositorio extends
-		JpaRepository<Professor, Serializable> {
+public interface ProfessorRepositorio extends JpaRepository<Professor, Serializable> {
 
 	Professor findProfessorByMatricula(String matricula);
 }

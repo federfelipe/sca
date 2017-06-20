@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Alocacao Horario</title>
+		<title>Alocação Horário</title>
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 			rel="stylesheet">
 		<link href="<c:url value='/resources/bootstrap/css/bootstrap.css' />"
@@ -29,7 +29,7 @@
 	<body>
 		<center>
 			<h1>Alocação de Horário</h1>
-			<form action="${pageContext.request.contextPath}/salvaGrade" method="post">
+			<form action="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade" method="post">
 				<div class="tabela">
 					<table id="tabelaHorario" border="1">
 						<thead>
@@ -105,7 +105,7 @@
 	
 				<div class="row botoes">
 					<input type="submit" class="btn btn-success btnSalvar" value="Salvar" />
-					<button type="button" class="btn btn-danger btnVoltar" onclick="voltar()">Voltar</button>
+					<button type="button" class="btn btn-info btnVoltar" onclick="voltar()">Voltar</button>
 				</div>
 			</form>
 		</center>

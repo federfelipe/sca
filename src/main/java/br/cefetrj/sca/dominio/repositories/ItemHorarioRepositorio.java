@@ -7,25 +7,24 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import br.cefetrj.sca.dominio.ItemHorario;
 
-public interface ItemHorarioRepositorio extends
-JpaRepository<ItemHorario, Serializable> {
+public interface ItemHorarioRepositorio extends JpaRepository<ItemHorario, Serializable> {
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.id = ?1")
+	@Query("SELECT * FROM itemhorario WHERE id = ?1")
 	public ItemHorario getItemHorario(Long id);
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.dia_semana = ?1")
+	@Query("SELECT * FROM itemhorario WHERE dia = ?1")
 	public List<ItemHorario> findItensHorariosByDiaSemana(String dia);
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.tempo = ?1")
+	@Query("SELECT * FROM itemhorario WHERE tempo = ?1")
 	public List<ItemHorario> findItensHorariosByTempo(int tempo);
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.turno = ?1")
+	@Query("SELECT * FROM itemhorario WHERE turno = ?1")
 	public List<ItemHorario> findItensHorariosByTurno(int turno);
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.hora_inicio = ?1")
+	@Query("SELECT * FROM itemhorario WHERE inicio = ?1")
 	public List<ItemHorario> findItemHorariosByHoraInicio(Date horaInicio);
 	
-	@Query("SELECT ih FROM itemhorario ih WHERE ih.hora_fim = ?1")
+	@Query("SELECT * FROM itemhorario WHERE fim = ?1")
 	public List<ItemHorario> findItemHorariosByHoraFim(Date horaFim);
 
 }

@@ -10,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import br.cefetrj.sca.dominio.Disciplina;
 import br.cefetrj.sca.dominio.EnumDiaSemana;
 import br.cefetrj.sca.dominio.ItemHorario;
+import br.cefetrj.sca.dominio.LocalAula;
 import br.cefetrj.sca.dominio.Professor;
 import br.cefetrj.sca.dominio.Turma;
 import br.cefetrj.sca.dominio.repositories.ItemHorarioRepositorio;
+import br.cefetrj.sca.dominio.repositories.LocalAulaRepositorio;
 import br.cefetrj.sca.dominio.repositories.ProfessorRepositorio;
 import br.cefetrj.sca.dominio.repositories.TurmaRepositorio;
 
@@ -23,23 +25,20 @@ public class AlocacaoHorarioService {
 	@Autowired
 	private TurmaRepositorio turmaRepositorio;
 	
+	//@Autowired
 	private ItemHorarioRepositorio itemHorarioRepositorio;
 	
+	@Autowired
 	private ProfessorRepositorio professorRepositorio;
 	
-	// # estou usando esse método #
-	public List<Turma> findAll() {
-		return turmaRepositorio.findAll();
-	}
-
+	@Autowired
+	private LocalAulaRepositorio localAulaRepositorio;
 	
 	public List<ItemHorario> getItensHorario() {
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
 		return itensHorario;
 	}
 	
-	
-	// O metodo abaixo faz a mesma coisa que o metodo findAll() acima, porem possui um nome mais claro
 	// Metodo adicionado
 	public List<Turma> findAllTurmas() {
 		return turmaRepositorio.findAll();
@@ -95,5 +94,16 @@ public class AlocacaoHorarioService {
 	public List<String> getAllDiasSemana() {
 		return EnumDiaSemana.dias();
 	}
+	
+	// Metodo adicionado
+	public List<String> getAllDescricoesLocaisAula(){
+		List<LocalAula> locaisAula = localAulaRepositorio.findAll();
+		List<String> descricoes = new ArrayList<String>();
+		for(LocalAula localAula : locaisAula){
+			descricoes.add(localAula.getDescricao());
+		}
+		return descricoes;
+	}
+	
 
 }

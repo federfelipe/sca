@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -42,31 +41,27 @@ public class AlocacaoHorarioController {
 
 		List<Turma> turmas = alocaHorarioService.findAllTurmas();
 		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
-//		List<Professor> professores = alocaHorarioService.findAllProfessores();
+		List<Professor> professores = alocaHorarioService.findAllProfessores();
 //		List<String> horasInicio = alocaHorarioService.getAllHorasInicio();
 //		List<String> horasFim = alocaHorarioService.getAllHorasFim();
 		List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
+		List<String> descricoesLocaisAula = alocaHorarioService.getAllDescricoesLocaisAula();
 		
 		model.addAttribute("turmas", turmas);
 		model.addAttribute("disciplinas", disciplinas);
-//		model.addAttribute("professores", professores);
+		model.addAttribute("professores", professores);
 //		model.addAttribute("horasInicio", horasInicio);
 //		model.addAttribute("horasFim", horasFim);
 		model.addAttribute("diasSemana", diasSemana);
+		model.addAttribute("locaisAula", descricoesLocaisAula);
 		
 		return "/alocacaoHorario/alocacaoHorarioView";
 		
 	}
 	
-	// Metodo usado antes apenas para teste. Depois sera removido
-	@RequestMapping(value = "/definirTabela")
-	public String exibeMontarTabela(ModelMap model) {
-		
-		List<Turma> turmas = alocaHorarioService.findAll();
-		model.addAttribute("turmas", turmas);
-
-		return "/alocacaoHorarioTurma/alocacaoHorarioView";
-		
+	//@RequestMapping(value = "/salvaGrade", method = RequestMethod.GET)
+	public void salvaGradeHorario(Model model) {
+		// método para salvar a grade		
 	}
 
 }

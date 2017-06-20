@@ -25,7 +25,8 @@ public class AlocacaoHorarioService {
 	@Autowired
 	private TurmaRepositorio turmaRepositorio;
 	
-	//@Autowired
+	// Nao esta funcionando
+//	@Autowired
 	private ItemHorarioRepositorio itemHorarioRepositorio;
 	
 	@Autowired
@@ -96,13 +97,18 @@ public class AlocacaoHorarioService {
 	}
 	
 	// Metodo adicionado
-	public List<String> getAllDescricoesLocaisAula(){
+	public List<String> getAllDescricoesLocaisAula() {
 		List<LocalAula> locaisAula = localAulaRepositorio.findAll();
 		List<String> descricoes = new ArrayList<String>();
 		for(LocalAula localAula : locaisAula){
 			descricoes.add(localAula.getDescricao());
 		}
 		return descricoes;
+	}
+	
+	// Metodo adicionado
+	public List<LocalAula> findAllLocaisAula() {
+		return localAulaRepositorio.findAll();
 	}
 	
 

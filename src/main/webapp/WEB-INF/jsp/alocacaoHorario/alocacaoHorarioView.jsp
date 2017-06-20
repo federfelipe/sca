@@ -29,7 +29,7 @@
 	<body>
 		<center>
 			<h1>Alocação de Horário</h1>
-			<form action="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade" method="post">
+			<form action="${pageContext.request.contextPath}/salvaGrade" method="post">
 				<div class="tabela">
 					<table id="tabelaHorario" border="1">
 						<thead>
@@ -77,21 +77,21 @@
 								<td>
 									<select>
 										<c:forEach var="horaInicio" items="${horasInicio}">
-											<option>${horaInicio}</option>
+											<option>${horaInicio.tempoAula.inicio}</option>
 										</c:forEach>
 									</select>
 								</td>
 								<td>
 									<select>
 										<c:forEach var="horaFim" items="${horasFim}">
-											<option>${horaFim}</option>
+											<option>${horaFim.tempoAula.fim}</option>
 										</c:forEach>
 									</select>
 								</td>
 								<td>
 									<select>
 										<c:forEach var="localAula" items="${locaisAula}">
-											<option>${localAula.nome}</option>
+											<option>${localAula.descricao}</option>
 										</c:forEach>
 									</select>
 								</td>

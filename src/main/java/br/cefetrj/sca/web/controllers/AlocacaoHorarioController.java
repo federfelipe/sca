@@ -65,12 +65,12 @@ public class AlocacaoHorarioController {
 	
 	// Pega os dados submetidos pelo form, monta a grade e salva na base
 	@RequestMapping(value = "/salvaGrade", method = RequestMethod.POST)
-	public String salvaGradeHorario(Model model, HttpServletRequest request) {
+	public String salvaGradeHorario(Model model) {
 		// Obs: o jsp nao esta chamando esse metodo. O mapeamento nao esta funcionando corretamente
-		Map<String, String[]> parameters = request.getParameterMap();
+		//Map<String, String[]> parameters = request.getParameterMap();
 		
 		// retorna uma jsp informando que a grade de horários foi salva na base
-		return "/alocacaoHorario/salvaGradeView";
+		return "/alocacaoHorario/salvarAlocacaoHorarioView";
 	}
 
 }

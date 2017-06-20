@@ -29,7 +29,7 @@
 	<body>
 		<center>
 			<h1>Alocação de Horário</h1>
-			<form>
+			<form action="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade" method="post">
 				<div class="tabela">
 					<table id="tabelaHorario" border="1">
 						<thead>
@@ -69,7 +69,7 @@
 								</td>
 								<td>
 									<select>
-										<c:forEach var="dia" items="${dias}">
+										<c:forEach var="dia" items="${diasSemana}">
 											<option>${dia}</option>
 										</c:forEach>
 									</select>
@@ -104,7 +104,7 @@
 				<br/>
 	
 				<div class="row botoes">
-					<button type="button" class="btn btn-success btnSalvar" href="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade">Salvar Grade</button>
+					<input type="submit" class="btn btn-success btnSalvar" value="Salvar" />
 					<button type="button" class="btn btn-danger btnVoltar" onclick="voltar()">Voltar</button>
 				</div>
 			</form>

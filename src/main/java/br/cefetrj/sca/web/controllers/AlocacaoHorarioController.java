@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -72,5 +73,31 @@ public class AlocacaoHorarioController {
 		// retorna uma jsp informando que a grade de horários foi salva na base
 		return "/alocacaoHorario/salvarAlocacaoHorarioView";
 	}
+	
+	@RequestMapping(value = "/definirTabela")
+  	public String exibeMontarTabela(ModelMap model) {		  	
+ 		 		
 
-}
+		List<Turma> turmas = alocaHorarioService.findAllTurmas();
+		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
+		List<Professor> professores = alocaHorarioService.findAllProfessores();
+		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
+		List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
+		List<LocalAula> locaisAula = alocaHorarioService.findAllLocaisAula();
+		
+		model.addAttribute("turmas", turmas);
+		model.addAttribute("disciplinas", disciplinas);
+		model.addAttribute("professores", professores);
+		model.addAttribute("diasSemana", diasSemana);
+		model.addAttribute("horas", itensHorario);
+	//	model.addAttribute("horasFim", itensHorario);
+		model.addAttribute("locaisAula", locaisAula);
+		  		  
+ 		return "/alocacaoHorario/alocacaoHorarioViewTest";	
+ 				 		
+ 	}		 	
+ 		 
+ }
+	
+
+

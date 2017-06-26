@@ -26,7 +26,7 @@ public class AlocacaoHorarioService {
 	private TurmaRepositorio turmaRepositorio;
 	
 	// Nao esta funcionando
-//	@Autowired
+	@Autowired
 	private ItemHorarioRepositorio itemHorarioRepositorio;
 	
 	@Autowired

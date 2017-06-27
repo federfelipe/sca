@@ -16,8 +16,8 @@ public class ItemHorario {
 	@Embedded
 	private IntervaloTemporal tempoAula;
 
-	/*@Enumerated(EnumType.ORDINAL)
-	EnumDiaSemana dia;*/
+	@Enumerated(EnumType.STRING)
+	EnumDiaSemana dia;
 	
 	private int turno;
 	
@@ -27,17 +27,17 @@ public class ItemHorario {
 	private ItemHorario() {
 	}
 
-	/*public ItemHorario(EnumDiaSemana dia, IntervaloTemporal tempoAula) {
+	public ItemHorario(EnumDiaSemana dia, IntervaloTemporal tempoAula) {
 		this.tempoAula = tempoAula;
 		this.dia = dia;
-	}*/
+	}
 	
 	// Metodo adicionado
-	/*public ItemHorario(EnumDiaSemana dia, IntervaloTemporal tempoAula, int turno, int tempo) {
+	public ItemHorario(EnumDiaSemana dia, IntervaloTemporal tempoAula, int turno, int tempo) {
 		this(dia, tempoAula);
 		this.turno = turno;
 		this.tempo = tempo;
-	}*/
+	}
 
 	public Long getId() {
 		return id;
@@ -56,16 +56,16 @@ public class ItemHorario {
 	}
 	
 	// Metodo adicionado
-/*	public EnumDiaSemana getDia()
+	public EnumDiaSemana getDia()
 	{
 		return this.dia;
-	}*/
+	}
 		
 	// Metodo adicionado
-/*	public void setDia(EnumDiaSemana dia)
+	public void setDia(EnumDiaSemana dia)
 	{
 		this.dia = dia;
-	}*/
+	}
 	
 	// Metodo adicionado
 	public int getTurno(){
@@ -76,5 +76,5 @@ public class ItemHorario {
 	public int getTempo(){
 		return this.tempo;
 	}
-	
+
 }

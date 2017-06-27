@@ -17,6 +17,7 @@ import br.cefetrj.sca.dominio.repositories.ItemHorarioRepositorio;
 import br.cefetrj.sca.dominio.repositories.LocalAulaRepositorio;
 import br.cefetrj.sca.dominio.repositories.ProfessorRepositorio;
 import br.cefetrj.sca.dominio.repositories.TurmaRepositorio;
+import br.cefetrj.sca.dominio.usuarios.Usuario;
 
 @Service
 @Transactional
@@ -111,5 +112,18 @@ public class AlocacaoHorarioService {
 		return localAulaRepositorio.findAll();
 	}
 	
-
+	public void deleteTurma(Long id) {
+		Turma turma = turmaRepositorio.findTurmaById(id);
+		turmaRepositorio.delete(turma);
+	}
+	
+	public Turma findTurmaById(Long id) {
+		return turmaRepositorio.findTurmaById(id);
+	}
+	
+	public List<Turma> findLastTurmas() {
+		return turmaRepositorio.findLastTurmas();
+	}
+    
+	
 }

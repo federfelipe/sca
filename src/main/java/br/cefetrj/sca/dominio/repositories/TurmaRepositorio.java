@@ -37,4 +37,8 @@ public interface TurmaRepositorio extends JpaRepository<Turma, Serializable> {
 
 	@Query("SELECT t from Turma t WHERE t.professor.matricula = ?1")
 	public List<Turma> findTurmasLecionadasPorProfessor(String matriculaProfessor);
+
+	@Query("SELECT t from Turma t order by t.id desc")
+	List<Turma> findLastTurmas();
+	
 }

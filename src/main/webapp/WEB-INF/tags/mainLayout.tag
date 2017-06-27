@@ -207,7 +207,11 @@ body {
 										Alocação de Horário </a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/alocacaoHorario/definirTabela/">
-										Teste de Alocação de Horário (TEMP) </a></li>
+										Teste de Alocação de Horário </a></li>
+										
+								<li><a
+									href="${pageContext.request.contextPath}/alocacaoHorario/list/">
+										Gerenciar Turmas</a></li>		
 							</ul>
 						</li>
 					</sec:authorize>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,29 +29,27 @@
 	
 	<body>
 		<center>
-			<h1>Alocação de Horário</h1>
-			<form action="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade" method="post">
+			<h1>Criação de Turma</h1>
+			<form:form action="${pageContext.request.contextPath}/alocacaoHorario/salvaGrade" method="post" modelAttribute="turma">
 				<div class="tabela">
-					<table id="tabelaHorario" border="1">
+					<table>
 						<thead>
 							<tr>
 								<td>Código Turma</td>
 								<td>Nome da Disciplina</td>
 								<td>Professor</td>
 								<td>Dia da Semana</td>
-								<td>Hora de Início</td>
-								<td>Hora de Término</td>
-								<td>Local</td>
+								
 							</tr>
 						</thead>
 						<tbody>
-							<%for(int i = 0; i < 48; i++){%>
+							<%-- <%for(int i = 0; i < 3; i++){%> --%>
 							<tr>
 								<td>
 									<select>
 										<c:forEach var="turma" items="${turmas}">
-											<option>${turma.codigo}</option>
-										</c:forEach>
+											<option value="${turma.codigo}">${turma.codigo}</option>
+										</c:forEach> 
 									</select>
 								</td>
 								<td>
@@ -66,8 +65,9 @@
 											<option>${professor.pessoa.nome}</option>
 										</c:forEach>
 									</select>
-								</td>
-								<td>
+								</td> 
+								
+								<%-- <td>
 									<select>
 										<c:forEach var="dia" items="${diasSemana}">
 											<option>${dia}</option>
@@ -87,18 +87,33 @@
 											<option>${hora.fim}</option>
 										</c:forEach>
 									</select>
-								</td>
+								</td> --%>
+								
+								
 								<td>
+									<select>
+										<c:forEach var="hora" items="${horas}">
+											<option>${hora.dia}: ${hora.inicio} - ${hora.fim}</option>
+										</c:forEach>
+									</select>
+								</td>
+								<%-- <td>
 									<select>
 										<c:forEach var="localAula" items="${locaisAula}">
 											<option>${localAula.descricao}</option>
 										</c:forEach>
 									</select>
-								</td>
-							</tr>
-							<%}%>
+								</td>  --%>
+					
+							</tr> 
+
+
+
+							<%-- <%}%> --%>
 						</tbody>
 					</table>
+					
+											
 				</div>
 
 				<br/>
@@ -107,7 +122,7 @@
 					<input type="submit" class="btn btn-success btnSalvar" value="Salvar" />
 					<button type="button" class="btn btn-info btnVoltar" onclick="voltar()">Voltar</button>
 				</div>
-			</form>
+			</form:form>
 		</center>
 	</body>
 </html>

@@ -80,7 +80,7 @@ public class Turma {
 	private PeriodoLetivo periodo;
 
 	@SuppressWarnings("unused")
-	private Turma() {
+	public Turma() {
 	}
 
 	/**

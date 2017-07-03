@@ -117,7 +117,7 @@ public class UsuarioController {
 	 */
 	@RequestMapping(value = { "/edit-user-{login}" }, method = RequestMethod.POST)
 	public String updateUser(@Valid Usuario user, BindingResult result, ModelMap model, @PathVariable String login) {
-
+		
 		if (result.hasErrors()) {
 			model.addAttribute("user", user);
 			return "/usuarios/registration";

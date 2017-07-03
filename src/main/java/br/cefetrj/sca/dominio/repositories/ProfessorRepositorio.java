@@ -9,4 +9,6 @@ import br.cefetrj.sca.dominio.Professor;
 public interface ProfessorRepositorio extends JpaRepository<Professor, Serializable> {
 
 	Professor findProfessorByMatricula(String matricula);
+	
+	Professor findProfessorById(Long idProfessor);
 }

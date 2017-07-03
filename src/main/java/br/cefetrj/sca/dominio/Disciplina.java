@@ -67,7 +67,7 @@ public class Disciplina {
 	VersaoCurso versaoCurso;
 
 	@SuppressWarnings("unused")
-	private Disciplina() {
+	public Disciplina() {
 	}
 
 	private Disciplina(String nome, String codigo, String quantidadeCreditos) {

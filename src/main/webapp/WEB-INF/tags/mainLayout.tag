@@ -203,12 +203,8 @@ body {
 									href="${pageContext.request.contextPath}/monografias/blacklist/">
 										Blacklist de tags em monografias </a></li>
 								<li><a
-									href="${pageContext.request.contextPath}/alocacaoHorario/montarTabela/">
+									href="${pageContext.request.contextPath}/alocacaoHorario/alocahorario/">
 										Alocação de Horário </a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/alocacaoHorario/definirTabela/">
-										Teste de Alocação de Horário </a></li>
-										
 								<li><a
 									href="${pageContext.request.contextPath}/alocacaoHorario/list/">
 										Gerenciar Turmas</a></li>		

@@ -7,17 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.cefetrj.sca.dominio.AlocacaoHorario;
 import br.cefetrj.sca.dominio.Disciplina;
 import br.cefetrj.sca.dominio.EnumDiaSemana;
 import br.cefetrj.sca.dominio.ItemHorario;
 import br.cefetrj.sca.dominio.LocalAula;
 import br.cefetrj.sca.dominio.Professor;
 import br.cefetrj.sca.dominio.Turma;
+import br.cefetrj.sca.dominio.repositories.AlocacaoHorarioRepositorio;
+import br.cefetrj.sca.dominio.repositories.DisciplinaRepositorio;
 import br.cefetrj.sca.dominio.repositories.ItemHorarioRepositorio;
 import br.cefetrj.sca.dominio.repositories.LocalAulaRepositorio;
 import br.cefetrj.sca.dominio.repositories.ProfessorRepositorio;
 import br.cefetrj.sca.dominio.repositories.TurmaRepositorio;
-import br.cefetrj.sca.dominio.usuarios.Usuario;
 
 @Service
 @Transactional
@@ -35,6 +37,12 @@ public class AlocacaoHorarioService {
 	
 	@Autowired
 	private LocalAulaRepositorio localAulaRepositorio;
+	
+	@Autowired 
+	private AlocacaoHorarioRepositorio alocacaoHorarioRepositorio;
+	
+	@Autowired
+	private DisciplinaRepositorio disciplinaRepositorio;
 	
 	public List<ItemHorario> getItensHorario() {
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
@@ -69,7 +77,7 @@ public class AlocacaoHorarioService {
 	}
 	
 	// Metodo adicionado
-	public List<String> getAllHorasInicio() {
+	/*public List<String> getAllHorasInicio() {
 		List<String> horasInicio = new ArrayList<String>();
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
 		for(ItemHorario itemHorario : itensHorario)
@@ -78,10 +86,10 @@ public class AlocacaoHorarioService {
 			horasInicio.add(horaInicio);
 		}
 		return horasInicio;
-	}
+	}*/
 	
 	// Metodo adicionado
-	public List<String> getAllHorasFim() {
+	/*public List<String> getAllHorasFim() {
 		List<String> horasFim = new ArrayList<String>();
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
 		for(ItemHorario itemHorario : itensHorario)
@@ -90,7 +98,7 @@ public class AlocacaoHorarioService {
 			horasFim.add(horaFim);
 		}
 		return horasFim;
-	}
+	}*/
 	
 	// Metodo adicionado
 	public List<String> getAllDiasSemana() {
@@ -124,6 +132,35 @@ public class AlocacaoHorarioService {
 	public List<Turma> findLastTurmas() {
 		return turmaRepositorio.findLastTurmas();
 	}
+
+	public void atualizarTurma(Turma turma, Disciplina disciplina, Professor professor) {
+		if (turma != null) {
+			turma.setDisciplina(disciplina);
+			turma.setProfessor(professor);
+		}
+		
+	}
+
+	public Disciplina findDisciplinaById(long disciplina) {
+		return disciplinaRepositorio.findDisciplinaById(disciplina);
+	}
+
+	public Professor findProfessorById(long professor) {
+		return professorRepositorio.findProfessorById(professor);
+	}
+
+	public List<AlocacaoHorario> findAllAlocacaoHorario() {
+		return alocacaoHorarioRepositorio.findAll();
+	}
     
+	/*public void atualizarUsuario(Usuario user) {
+		Usuario entity = repositorio.findOne(user.getId());
+		if (entity != null) {
+			entity.setLogin(user.getLogin());
+			entity.setNome(user.getNome());
+			entity.setEmail(user.getEmail());
+			entity.setUserProfiles(user.getUserProfiles());
+		}
+	}*/
 	
 }

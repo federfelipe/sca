@@ -79,7 +79,6 @@ public class Turma {
 	@Embedded
 	private PeriodoLetivo periodo;
 
-	@SuppressWarnings("unused")
 	public Turma() {
 	}
 
@@ -368,6 +367,10 @@ public class Turma {
 	public String toString() {
 		return "Turma [codigo=" + codigo + ", disciplina=" + disciplina
 				+ ", periodo=" + periodo + "]";
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;				
 	}
 
 }

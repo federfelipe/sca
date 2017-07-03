@@ -1,11 +1,8 @@
 package br.cefetrj.sca.web.controllers;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
+import br.cefetrj.sca.dominio.AlocacaoHorario;
 import br.cefetrj.sca.dominio.Disciplina;
 import br.cefetrj.sca.dominio.ItemHorario;
 import br.cefetrj.sca.dominio.LocalAula;
 import br.cefetrj.sca.dominio.Professor;
 import br.cefetrj.sca.dominio.Turma;
-import br.cefetrj.sca.dominio.usuarios.Usuario;
 import br.cefetrj.sca.service.AlocacaoHorarioService;
 
 @Controller
@@ -51,7 +47,7 @@ public class AlocacaoHorarioController {
 		return "/menuPrincipalView";
 	}
 	
-	@RequestMapping(value = "/montarTabela", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/montarTabela", method = RequestMethod.GET)
 	public String exibeMontarTabela(Model model) {
 
 		List<Turma> turmas = alocaHorarioService.findAllTurmas();
@@ -71,7 +67,7 @@ public class AlocacaoHorarioController {
 		
 		return "/alocacaoHorario/alocacaoHorarioView";
 		
-	}
+	}*/
 	
 	// Pega os dados submetidos pelo form, monta a grade e salva na base
 /*	@RequestMapping(value = "/salvaGrade", method = RequestMethod.POST)
@@ -92,7 +88,7 @@ public class AlocacaoHorarioController {
 		return "/alocacaoHorario/salvarAlocacaoHorarioView";
 	}*/
 	
-	// Form Luiz
+/*	// Form Luiz
 	@RequestMapping(value = "/definirTabela")
    	public String exibeMontarTabela(ModelMap model) {		  	
   		 		
@@ -114,25 +110,37 @@ public class AlocacaoHorarioController {
  		  		  
   		return "/alocacaoHorario/alocacaoHorarioViewTest";	
   				 		
-  	}
+  	}*/
 	
+	 /** TURMAS */
 	
-	// Outro caminho
-		
 	/**
-	 * lista Turmas
+	 * Menu Principal - Listar Turmas
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
 	public String listTurmas(ModelMap model) {
 
 		List<Turma> turmas = alocaHorarioService.findLastTurmas();
+		Turma turma = new Turma();
+		int numberOfTurmas = getNumOfElementInList(turmas, turma);
+		model.addAttribute("countTurmas", numberOfTurmas);
 		model.addAttribute("turmas", turmas);
-
 		return "/alocacaoHorario/turmaslist";
 	}
 	
+	public int getNumOfElementInList(List<Turma> list, Object Turma){
+		   int count = 0;
+		   for(Turma element: list){
+		      if(element.equals(Turma)) 
+		    	  System.out.print("Entrou!!!");
+		    	  count++;
+		     	  
+		   }
+		   return count;
+	}	
+	
 	/**
-	 *  add turma.
+	 *  add Turma
 	 */
 	@RequestMapping(value = { "/newturma" }, method = RequestMethod.GET)
 	public String newTurma(ModelMap model) {
@@ -149,106 +157,147 @@ public class AlocacaoHorarioController {
 		return "/alocacaoHorario/turmaregistrar";
 	
 	}
-/*	
-	*//**
-	 * submissao do formulário, post request para salvar no banco
-	 *//*
-	@RequestMapping(value = { "/newuser" }, method = RequestMethod.POST)
-	public String saveUser(@Valid Turma turma, BindingResult result, ModelMap model) {
-
-		if (result.hasErrors()) {
-			model.addAttribute("user", user);
-			return "/usuarios/registration";
-		}
-
-		if (!usuarioService.isLoginJaExistente(user.getId(), user.getLogin())) {
-			FieldError loginError = new FieldError("user", "login", messageSource.getMessage("non.unique.login",
-					new String[] { user.getLogin() }, Locale.getDefault()));
-			result.addError(loginError);
-			return "/usuarios/registration";
-		}
-
-		usuarioService.adicionarUsuario(user);
-
-		model.addAttribute("success", "Usuário " + user.getNome() + " registrado com sucesso");
-
-		return "/usuarios/registrationsuccess";
-	}*/
 	
-
-	 // tentativa
-	  @RequestMapping(value = "/felipe", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("turma")Turma turma, 
-      BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-        System.out.print("FELIPEEEEEEEEEEEEEEEEEEEE");
-        model.addAttribute("codigo", turma.getCodigo());
-        model.addAttribute("periodo", turma.getPeriodo());
-        model.addAttribute("disciplina", turma.getDisciplina());
-        model.addAttribute("professor", turma.getDisciplina());
-        return "/alocacaoHorario/turmaslist";
-    }  
-	  
-	  
-	  
-	  /**
-	  * Este método remove uma turma identificada pelo id.  FUNCIONANDO!
+	/**
+	  * remove Turma id.  FUNCIONANDO!
 	 */
 	@RequestMapping(value = { "/delete-turma-{id}" }, method = RequestMethod.GET)
 		public String deleteTurma(@PathVariable long id) {
 		  alocaHorarioService.deleteTurma(id);
-			return "redirect:/alocacaoHorario/list"; 
+		  return "redirect:/alocacaoHorario/list"; 
 		}
-
 	
-	/**
-	 * Esse método fornece uma view para atualizar uma turma .  FUNCIONANDO!
+    /**
+	 * View Update Turma
 	 */
 	@RequestMapping(value = { "/edit-turma-{id}" }, method = RequestMethod.GET)
-	public String editTurma(@PathVariable long id, ModelMap model) {
+	public String editUser(@PathVariable long id, ModelMap model) {
+	
 		Turma turma = alocaHorarioService.findTurmaById(id);
-		model.addAttribute("turma", turma);
-		model.addAttribute("edit", true);
-		return "/alocacaoHorario/turmaedit";
+		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
+		List<Professor> professores = alocaHorarioService.findAllProfessores();	
+		
+    	model.addAttribute("turma", turma);	
+		model.addAttribute("disciplinas", disciplinas);	
+		model.addAttribute("professores", professores);	
+		
+		System.out.println("AQUIIIII CACETE!");
+    	return "/alocacaoHorario/turmaedit";
+	}
+
+	/**
+	 * Este método, chamado na submissão do form, manipula a requisição POST
+	 * para atualizar um usuário. Ele também valida os dados fornecidos.
+	 */  
+	@RequestMapping(value = { "/edit-turma-{id}" }, method = RequestMethod.POST) //
+	public String updateUser(@Valid  @ModelAttribute Turma turma, BindingResult result, ModelMap model, @PathVariable long id, 
+			@RequestParam long disciplina, @RequestParam long professor) {
+		
+		for (Object object : result.getAllErrors()) {
+		    if(object instanceof FieldError) {
+		        FieldError fieldError = (FieldError) object;
+		        System.out.println(fieldError.getCode());
+		    }
+		}	
+		
+		if (result.hasErrors()) {
+			Turma turmaUpdate = alocaHorarioService.findTurmaById(id);
+			Disciplina disciplinaUpdate = alocaHorarioService.findDisciplinaById(disciplina);
+			Professor professorUpdate = alocaHorarioService.findProfessorById(professor);
+			System.out.println("está entrando aqui!");
+			alocaHorarioService.atualizarTurma(turmaUpdate, disciplinaUpdate, professorUpdate);
+			return "redirect:/alocacaoHorario/list";
+		}
+		
+		Turma turmaUpdate = alocaHorarioService.findTurmaById(id);
+		Disciplina disciplinaUpdate = alocaHorarioService.findDisciplinaById(disciplina);
+		Professor professorUpdate = alocaHorarioService.findProfessorById(professor);
+		System.out.println("está entrando aqui!");
+		alocaHorarioService.atualizarTurma(turmaUpdate, disciplinaUpdate, professorUpdate);
+		return "redirect:/alocacaoHorario/list";
 	}
 	
+		
+	/** Alocação Horario */
+	
+	 /** Menu Principal - Alocação de Horário */
+	
+		@RequestMapping(value = { "/alocahorario" }, method = RequestMethod.GET)
+		public String listAlocaHorarioTurmas(ModelMap model) {
+
+			List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
+			List<AlocacaoHorario> alocacaoHorario = alocaHorarioService.findAllAlocacaoHorario();
+			model.addAttribute("horas", itensHorario);
+			//model.addAttribute("turma", turma);
+			model.addAttribute("edit", true);
+			model.addAttribute("alocacaoHorario",alocacaoHorario);
+			return "/alocacaoHorario/alocaHorarioList";
+		}	
+	
 	/**
-	 * Esse método fornece uma view para atualizar uma turma com alocaHorario.  FUNCIONANDO!
+	 * View para atualizar uma turma com alocaHorario.  FUNCIONANDO!
 	 */
 	@RequestMapping(value = { "/edit-turmaAlocaHorario-{id}" }, method = RequestMethod.GET)
 	public String editTurmaAlocaHorario(@PathVariable long id, ModelMap model) {
 		Turma turma = alocaHorarioService.findTurmaById(id);
 		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
+		List<AlocacaoHorario> alocacaoHorario = alocaHorarioService.findAllAlocacaoHorario();
 		model.addAttribute("horas", itensHorario);
 		model.addAttribute("turma", turma);
 		model.addAttribute("edit", true);
+		model.addAttribute("alocacaoHorario",alocacaoHorario);
 		return "/alocacaoHorario/turmaalocahorario";
 	}
+	//Request Mapping (value = { "/edit-turmaAlocaHorario-{id}" }
+	//@Valid  @ModelAttribute Turma turma, BindingResult result,
+	@RequestMapping(value = { "/edit-turmaAlocaHorario" }, method = RequestMethod.POST)
+	public String updateTurmaAlocaHorario(ModelMap model, @RequestParam String nomeTurma, 
+			@RequestParam String nomeProfessor) {
+		//Turma turma = alocaHorarioService.findTurmaById(id);
+		System.out.print(nomeProfessor);
+		
+		/*System.out.println("CHEGOU AQUI");
+		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
+		model.addAttribute("horas", itensHorario);
+		model.addAttribute("turma", turma);
+		model.addAttribute("edit", true);*/
+		return "/alocacaoHorario/turmaalocahorario2";
+	}
 	
-	 		 		
- /*
- 		List<Turma> turmas = alocaHorarioService.findAllTurmas();
- 		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
- 		List<Professor> professores = alocaHorarioService.findAllProfessores();
- 		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
- 		List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
- 		List<LocalAula> locaisAula = alocaHorarioService.findAllLocaisAula();
- 		
- 		model.addAttribute("turmas", turmas);
- 		model.addAttribute("disciplinas", disciplinas);
- 		model.addAttribute("professores", professores);
- 		model.addAttribute("diasSemana", diasSemana);
- 		model.addAttribute("horas", itensHorario);
- 	//	model.addAttribute("horasFim", itensHorario);
- 		model.addAttribute("locaisAula", locaisAula);
- 		  		  
-  		return "/alocacaoHorario/alocacaoHorarioViewTest";	
-  				 		
-  	}*/
+/*	////////////////////////////////////////////////
+	 //	System.out.println("Esse é o ID: " + id);
+	 // System.out.println("Esse é o ID da disciplina: " + disciplina);
+	 //	System.out.println("Esse é o ID do professor: " + professor);
+	//	System.out.println(turma); O objeto 'turma' do Jsp está vindo 'null' 
+				
+		// Print da mensagem de erro
+		for (Object object : result.getAllErrors()) {
+		    if(object instanceof FieldError) {
+		        FieldError fieldError = (FieldError) object;
+		        System.out.println(fieldError.getCode());
+		    }
+		}	
+		
+		// teste erro
+		if (result.hasErrors()) {
+			Turma turmaUpdate = alocaHorarioService.findTurmaById(id);
+			Disciplina disciplinaUpdate = alocaHorarioService.findDisciplinaById(disciplina);
+			Professor professorUpdate = alocaHorarioService.findProfessorById(professor);
+			System.out.println("está entrando aqui!");
+			alocaHorarioService.atualizarTurma(turmaUpdate, disciplinaUpdate, professorUpdate);
+			return "redirect:/alocacaoHorario/list";
+		}
+		
+		Turma turmaUpdate = alocaHorarioService.findTurmaById(id);
+		Disciplina disciplinaUpdate = alocaHorarioService.findDisciplinaById(disciplina);
+		Professor professorUpdate = alocaHorarioService.findProfessorById(professor);
+		System.out.println("está entrando aqui!");
+		alocaHorarioService.atualizarTurma(turmaUpdate, disciplinaUpdate, professorUpdate);
+		return "redirect:/alocacaoHorario/list";
+	}*/
 	
- }
 	
-
-
+	
+	
+}
+	

@@ -7,7 +7,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Formulário de Registro de Usuário</title>
+<title>Formulário de Modificação de Turma</title>
 
 	<link href="<c:url value='/resources/bootstrap/css/bootstrap.css' />" rel="stylesheet" />
 	<link href="<c:url value='/resources/css/usuarios.css' />" rel="stylesheet" />
@@ -16,83 +16,83 @@
 
 <body>
 
+		
+<%-- 	<form:form method="POST" action="/alocacaoHorario/adicionarItemNoPedido" modelAttribute="turma">
+		    
+		   <tr> <form:input path="id"/></tr>
+		   <tr> <form:input path="codigo"/> </tr>
+		   <tr> <form:input path="capacidadeMaxima"/> </tr>
+		    
+          <tr>  <form:input path="periodo"/>  </tr>
+           <tr> <form:input path="disciplina"/> </tr>
+           <tr> <form:input path="professor"/> </tr>
+           <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+     </form:form>        --%>       
+     
+     
 	<div class="generic-container">
-		<div class="well lead">Formulário de Modificação de Turma</div>
+		<div class="well lead">Formulário de Registro de Usuário</div>
 		<form:form method="POST" modelAttribute="turma" class="form-horizontal">
-			<form:input type="hidden" path="id" id="id" />
+			<%-- <form:input type="hidden" path="id" id="id" />  --%>
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="nome">Codigo</label>
+					<label class="col-md-3 control-lable" for="codigo">Codigo</label>
 					<div class="col-md-7">
 						<form:input type="text" path="codigo" id="codigo"
 							class="form-control input-sm"/>
+						
 					</div>
 				</div>
 			</div>
 
-			<div class="row">
+	      <div class="row">
 				<div class="form-group col-md-12">
+					
 					<label class="col-md-3 control-lable" for="disciplina">Disciplina</label>
 					<div class="col-md-7">
-						<c:choose>
-							<c:when test="${edit}">
-								<form:input type="text" path="disciplina.nome" id="disciplina"
-									class="form-control input-sm" disabled="true" />
-							</c:when>
-							<c:otherwise>
-								<form:input type="text" path="disciplina" id="disciplina"
-									class="form-control input-sm" />
-							</c:otherwise>
-						</c:choose>
+							<form:input type="text" path="disciplina.nome" id="disciplina"
+									class="form-control input-sm" disabled="false" />
 					</div>
+					<!-- type  mismatch --> 
+					<%-- <form:select path="disciplina">
+    						<form:options items="${disciplinas}"  itemValue="id" itemLabel="nome" />
+					</form:select>  --%>
+					<br><br>
+					<form:select path="disciplina" items="${disciplinas}" 
+							itemValue="id" itemLabel="nome" class="form-control" />
 				</div>
-			</div>
-
+			</div> 
+			
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="professor.nome">Professor</label>
+					
+					<label class="col-md-3 control-lable" for="professor">Professor</label>
 					<div class="col-md-7">
-						<form:input type="text" path="professor.nome" id="professor.nome"
-							class="form-control input-sm" />
+							<form:input type="text" path="professor.nome" id="professor"
+									class="form-control input-sm" disabled="false" />
 					</div>
+					<!-- type  mismatch --> 
+					<%-- <form:select path="disciplina">
+    						<form:options items="${disciplinas}"  itemValue="id" itemLabel="nome" />
+					</form:select>  --%>
+					<br><br>
+					<form:select path="professor" items="${professores}" 
+							itemValue="id" itemLabel="nome" class="form-control" />
 				</div>
-			</div>
-
-			<%-- <div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="userProfiles">Perfis</label>
-					<div class="col-md-7">
-						<form:select path="userProfiles" items="${roles}" multiple="true"
-							itemValue="id" itemLabel="type" class="form-control" />
-						<div class="has-error">
-							<form:errors path="userProfiles" class="help-inline" />
-						</div>
-					</div>
-				</div>
-			</div> --%>
-
+			</div> 
+		
 			<div class="row">
-				<%-- <div class="form-actions floatRight">
-					<c:choose>
-						<c:when test="${edit}">
-							<input type="submit" value="Atualizar"
+				<div class="form-actions floatRight">
+					<input type="submit" value="Atualizar"
 								class="btn btn-primary btn-sm" /> ou <a
-								href="<c:url value='/alocacaoHorario/list' />">CancelarF</a>
-						</c:when>
-						<c:otherwise>
-							<input type="submit" value="Registrar"
-								class="btn btn-danger" /> ou <a
-								href="<c:url value=' />">CancelarF</a>
-						</c:otherwise>
-					</c:choose> --%>
-						<td><a href="<c:url value='/alocacaoHorario/edit-turma-${turma.id}' />"
-							class="btn btn-success custom-width">Atualizar</a></td>	
-							<td><a href="<c:url value='/alocacaoHorario/list' />"
-								class="btn btn-danger custom-width">Cancelar</a></td>
+								href="<c:url value='/alocacaoHorario/list' />">Cancelar</a>
 				</div>
 			</div>
 		</form:form>
-	</div>
+	</div>      
+	
 </body>
 </html>

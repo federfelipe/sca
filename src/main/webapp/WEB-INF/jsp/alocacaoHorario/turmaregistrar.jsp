@@ -16,55 +16,62 @@
 
 <body>
        <div>
-			<h1>Formulário de Registro de Turma</h1>
-		 <form:form action="${pageContext.request.contextPath}/alocacaoHorario/felipe"  method="post" modelAttribute="turmaModel">
-             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-             <table>
-                <tr>
-                   <td>
-                    <form:select path="codigo">
-                         <c:forEach var="turma" items="${turmas}">
-							<option value="${turma.codigo}">${turma.codigo}</option>
-					     </c:forEach>
-					</form:select>
-                </td> 
-                											                
-                <td>
-                   <form:select path="periodo">
-                       <c:forEach var="turma" items="${turmas}">
-							<option value="${turma.periodo}">${turma.periodo}</option>
-					   </c:forEach>
-				   </form:select>   
-                </td>
-                <td>
-					<form:select path="disciplina">
-						<c:forEach var="disciplina" items="${disciplinas}">
-							<option>${disciplina.nome}</option>
-						</c:forEach>
-					</form:select>
-				</td>
-				<td>
-					<form:select path="professor">
-						<c:forEach var="professor" items="${professores}">
-							<option>${professor.pessoa.nome}</option>
-						</c:forEach>
-					</form:select>
-				</td> 
-                
-                </tr>
-                <tr>
-                    <td><form:label path="id">Id</form:label></td>
-                    <td><form:input path="id"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="contactNumber">Contact Number</form:label></td>
-                    <td><form:input path="contactNumber"/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form:form>                 
+			<h1>Registrar Turma</h1>
+        
+        	<form:form method="POST" modelAttribute="turma" class="form-horizontal">
+			  
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable" for="codigo">Codigo</label>
+					<div class="col-md-7">
+						<form:select path="codigo" items="${turmas}" 
+							itemValue="codigo" itemLabel="codigo" class="form-control" />
+						
+					</div>
+				</div>
+			</div>
+
+	     <%--  <div class="row">
+				<div class="form-group col-md-12">
+					
+					<label class="col-md-3 control-lable" for="periodo">Periodo</label>
+				   <div class="col-md-7">
+					<form:select path="periodo" items="${turmas}" 
+							itemValue="periodo" itemLabel="periodo" class="form-control" />
+				  </div>
+			</div> 
+		  </div> --%>
+			
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable" for="disciplina">Disciplina</label>
+					<div class="col-md-7">
+						<form:select path="disciplina" items="${disciplinas}" 
+							itemValue="id" itemLabel="nome" class="form-control" />
+						
+					</div>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="form-group col-md-12">
+					<label class="col-md-3 control-lable" for="professor">Professor</label>
+					<div class="col-md-7">
+						<form:select path="professor" items="${professores}" 
+							itemValue="id" itemLabel="nome" class="form-control" />						
+					</div>
+				</div>
+			</div>
+					
+			<div class="row">
+				<div class="form-actions floatRight">
+					<input type="submit" value="Atualizar"
+								class="btn btn-primary btn-sm" /> ou <a
+								href="<c:url value='/alocacaoHorario/list' />">Cancelar</a>
+				</div>
+			</div>
+		</form:form>
+                     
 	</div>
 </body>
 </html>

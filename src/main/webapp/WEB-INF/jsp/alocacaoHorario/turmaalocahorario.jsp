@@ -15,18 +15,15 @@
 </head>
 
 <body>
-
 	<div class="generic-container">
-		<div class="well lead">Formulário de Alocação de Horário</div>
+		<div class="well lead">Alocar Horário</div>
 		<form:form method="POST" modelAttribute="turma" class="form-horizontal">
-			<form:input type="hidden" path="id" id="id" />
-
 			<div class="row">
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="nome">Codigo</label>
 					<div class="col-md-7">
 						<form:input type="text" path="codigo" id="codigo"
-							class="form-control input-sm"/>
+							class="form-control input-sm" disabled="true" />
 					</div>
 				</div>
 			</div>
@@ -42,7 +39,7 @@
 							</c:when>
 							<c:otherwise>
 								<form:input type="text" path="disciplina" id="disciplina"
-									class="form-control input-sm" />
+									class="form-control input-sm" disabled="true" />
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -54,7 +51,7 @@
 					<label class="col-md-3 control-lable" for="professor.nome">Professor</label>
 					<div class="col-md-7">
 						<form:input type="text" path="professor.nome" id="professor.nome"
-							class="form-control input-sm" />
+							class="form-control input-sm" disabled="true" />
 					</div>
 				</div>
 			</div>
@@ -72,40 +69,11 @@
 			  </div>
 			</div>
 
-			<%-- <div class="row">
-				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="userProfiles">Perfis</label>
-					<div class="col-md-7">
-						<form:select path="userProfiles" items="${roles}" multiple="true"
-							itemValue="id" itemLabel="type" class="form-control" />
-						<div class="has-error">
-							<form:errors path="userProfiles" class="help-inline" />
-						</div>
-					</div>
-				</div>
-			</div> --%>
-
 			<div class="row">
-				<%-- <div class="form-actions floatRight">
-					<c:choose>
-						<c:when test="${edit}">
-							<input type="submit" value="Atualizar"
-								class="btn btn-primary btn-sm" /> ou <a
-								href="<c:url value='/alocacaoHorario/list' />">CancelarF</a>
-						</c:when>
-						<c:otherwise>
-							<input type="submit" value="Registrar"
-								class="btn btn-danger" /> ou <a
-								href="<c:url value=' />">CancelarF</a>
-						</c:otherwise>
-					</c:choose> --%>
-						<td><a href="<c:url value='/alocacaoHorario/edit-turma-${turma.id}' />"
-							class="btn btn-success custom-width">Atualizar</a></td>	
-							<td><a href="<c:url value='/alocacaoHorario/list' />"
-								class="btn btn-danger custom-width">Cancelar</a></td>
-				</div>
+				<a href="" class="btn btn-success custom-width">Atualizar</a>	
+				<a href="<c:url value='/alocacaoHorario/list' />" class="btn btn-danger custom-width">Cancelar</a>
 			</div>
-		</form:form>
+		  </form:form>
 	</div>
 </body>
 </html>

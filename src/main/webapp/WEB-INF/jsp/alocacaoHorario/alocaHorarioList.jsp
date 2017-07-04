@@ -23,12 +23,11 @@
 			</div>
 		   <div class="panel panel-primary">
   			  <div class="panel-heading lead">Turmas com Horários Alocados</div>
-  			  
-		  </div>
+  		  </div>
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th>Id</th>
+						<th>Id Turma</th>
 						<th>Código Turma</th>
 						<th>Disciplina</th>
 						<th>Professor</th>
@@ -42,7 +41,7 @@
 				<tbody>
 					<c:forEach items="${alocacaoHorario}" var="alocacaoHorario">
 						<tr>
-							<td>${alocacaoHorario.id}</td>
+							<td>${alocacaoHorario.turma.id}</td>
 							<td>${alocacaoHorario.turma.codigo}</td>
 							<td>${alocacaoHorario.turma.disciplina.nome}</td>
 							<td>${alocacaoHorario.turma.professor.nome}</td>
@@ -53,16 +52,16 @@
 								class="btn btn-warning custom-width">editar</a></td>
 							<td><a href="<c:url value='/alocacaoHorario/edit-turmaAlocaHorario-${turma.id}' />"
 								class="btn btn-success custom-width">alocar horarios</a></td>	 --%>
-							<td><a href="<c:url value='/alocacaoHorario/delete-turma-${turma.id}' />"
+							<td><a href="<c:url value='/alocacaoHorario/delete-alocacaoHorario-${alocacaoHorario.id}' />"
 								class="btn btn-danger custom-width">excluir</a></td>
-																																
+																															
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div class="well">
-			<a href="<c:url value='/usuarios/newuser' />">Adicionar Novo Usuário</a>
+			<a href="${pageContext.request.contextPath}/menuPrincipalView"><button type="button" class="btn btn-default" >Voltar</button></a>
 		</div>
 	</div> 	
 </body>

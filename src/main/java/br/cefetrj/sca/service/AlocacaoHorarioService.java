@@ -153,14 +153,14 @@ public class AlocacaoHorarioService {
 		return alocacaoHorarioRepositorio.findAll();
 	}
     
-	/*public void atualizarUsuario(Usuario user) {
-		Usuario entity = repositorio.findOne(user.getId());
-		if (entity != null) {
-			entity.setLogin(user.getLogin());
-			entity.setNome(user.getNome());
-			entity.setEmail(user.getEmail());
-			entity.setUserProfiles(user.getUserProfiles());
-		}
-	}*/
+	
+	public void adicionarTurma(Turma turma) {
+		turmaRepositorio.save(turma);
+	}
+	
+	public void deleteAlocacaoHorario(Long id) {
+		AlocacaoHorario alocacaoHorario = alocacaoHorarioRepositorio.findAlocacaoHorarioById(id);
+		alocacaoHorarioRepositorio.delete(alocacaoHorario);
+	}
 	
 }

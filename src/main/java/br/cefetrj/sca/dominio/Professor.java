@@ -51,8 +51,7 @@ public class Professor {
 		this.pessoa = pessoa;
 	}
 
-	@SuppressWarnings("unused")
-	private Professor() {
+	public Professor() {
 
 	}
 

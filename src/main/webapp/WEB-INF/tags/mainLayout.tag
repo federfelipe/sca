@@ -203,7 +203,7 @@ body {
 									href="${pageContext.request.contextPath}/monografias/blacklist/">
 										Blacklist de tags em monografias </a></li>
 								<li><a
-									href="${pageContext.request.contextPath}/alocacaoHorario/alocahorario/">
+									href="${pageContext.request.contextPath}/alocacaoHorario/alocaHorario/">
 										Alocação de Horário </a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/alocacaoHorario/list/">

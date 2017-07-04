@@ -82,6 +82,15 @@ public class Turma {
 	public Turma() {
 	}
 
+	
+	public Turma(String codigo, Disciplina disciplina, Professor professor) {
+		
+		this.codigo = codigo;
+		this.disciplina = disciplina;
+		this.professor = professor;
+		
+	}
+	
 	/**
 	 * Cria uma turma com disciplina e código fornecidos como parâmetros.
 	 * 
@@ -373,5 +382,12 @@ public class Turma {
 		this.disciplina = disciplina;				
 	}
 
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
+	public void setPeriodoLetivo(PeriodoLetivo periodo) {
+		this.periodo = periodo;
+	}
 }
 

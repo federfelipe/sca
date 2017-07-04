@@ -20,19 +20,19 @@
 			</div>
 		   <div class="panel panel-primary">
   			  <div class="panel-heading lead">Turmas Cadastradas</div>
-  			      <h3>Número de turmas cadastradas : ${countTurmas}</h3> 
+  			      <h4>Número de turmas cadastradas : ${countTurmas}</h4> 
 				   		   	 	   	          
 		
   			  <div class="btn-group" role="group" aria-label="...">
   			       <a href="${pageContext.request.contextPath}/menuPrincipalView"><button type="button" class="btn btn-default" >Voltar</button></a>
-				   <a href="<c:url value='/alocacaoHorario/newturma' />"><button type="button" class="btn btn-default">Criar Turma</button></a>
-				  <a href=""><button type="button" class="btn btn-default">Middle</button></a>
-			  </div> 			  
+				   <a href=""><button type="button" class="btn btn-default">Nova Turma</button></a>
+				   </div> 	<%-- <c:url value='/alocacaoHorario/novaturma' /> --%>		  
 		  </div>
 		  
 			<table class="table table-hover">
 				<thead>
 					<tr>
+						<th>Id</th>
 						<th>Codigo</th>
 						<th>Disciplina</th>
 						<th>Professor</th>
@@ -43,6 +43,7 @@
 				<tbody>
 					<c:forEach items="${turmas}" var="turma">
 						<tr>
+							<th>${turma.id}</th>
 							<td>${turma.codigo}</td>
 							<td>${turma.disciplina.nome}</td>
 							<td>${turma.professor.nome}</td>
@@ -57,10 +58,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-		</div>
-		<div class="well">
-			<a href="<c:url value='/usuarios/newuser' />">Adicionar Novo Usuário</a>
-		</div>
+		</div>		
 	</div>
 </body>
 </html>

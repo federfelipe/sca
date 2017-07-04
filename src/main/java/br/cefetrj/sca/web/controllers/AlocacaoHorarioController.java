@@ -2,7 +2,6 @@ package br.cefetrj.sca.web.controllers;
 
 import java.util.List;
 import java.util.logging.Logger;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import br.cefetrj.sca.dominio.AlocacaoHorario;
 import br.cefetrj.sca.dominio.Disciplina;
 import br.cefetrj.sca.dominio.ItemHorario;
-import br.cefetrj.sca.dominio.PeriodoLetivo;
 import br.cefetrj.sca.dominio.Professor;
 import br.cefetrj.sca.dominio.Turma;
 import br.cefetrj.sca.service.AlocacaoHorarioService;
@@ -46,52 +44,6 @@ public class AlocacaoHorarioController {
 	public String retornaMenuPrincipal() {
 		return "/menuPrincipalView";
 	}
-	
-/*	@RequestMapping(value = "/montarTabela", method = RequestMethod.GET)
-	public String exibeMontarTabela(Model model) {
-
-		List<Turma> turmas = alocaHorarioService.findAllTurmas();
-		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
-		List<Professor> professores = alocaHorarioService.findAllProfessores();
-//		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
-		List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
-		List<LocalAula> locaisAula = alocaHorarioService.findAllLocaisAula();
-		
-		model.addAttribute("turmas", turmas);
-		model.addAttribute("disciplinas", disciplinas);
-		model.addAttribute("professores", professores);
-//		model.addAttribute("horasInicio", itensHorario);
-//		model.addAttribute("horasFim", itensHorario);
-		model.addAttribute("diasSemana", diasSemana);
-		model.addAttribute("locaisAula", locaisAula);
-		
-		return "/alocacaoHorario/alocacaoHorarioView";
-		
-	}*/
-	
-/*	// Form Luiz
-	@RequestMapping(value = "/definirTabela")
-   	public String exibeMontarTabela(ModelMap model) {		  	
-  		 		
- 
- 		List<Turma> turmas = alocaHorarioService.findAllTurmas();
- 		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
- 		List<Professor> professores = alocaHorarioService.findAllProfessores();
- 		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
- 	//	List<String> diasSemana = alocaHorarioService.getAllDiasSemana();
- 		List<LocalAula> locaisAula = alocaHorarioService.findAllLocaisAula();
- 		
- 		model.addAttribute("turmas", turmas);
- 		model.addAttribute("disciplinas", disciplinas);
- 		model.addAttribute("professores", professores);
- 	//	model.addAttribute("diasSemana", diasSemana);
- 		model.addAttribute("horas", itensHorario);
- 	//	model.addAttribute("horasFim", itensHorario);
- 		model.addAttribute("locaisAula", locaisAula);
- 		  		  
-  		return "/alocacaoHorario/alocacaoHorarioViewTest";	
-  				 		
-  	}*/
 	
 	 /** TURMAS */
 	
@@ -130,14 +82,10 @@ public class AlocacaoHorarioController {
 		List<Disciplina> disciplinas = alocaHorarioService.findAllDisciplinas();
 		List<Professor> professores = alocaHorarioService.findAllProfessores();
 		
-/*		Turma turma = new Turma();*/
 		model.addAttribute("turma", new Turma());
-/*		model.addAttribute("turma", turma);
-*/		model.addAttribute("turmas", turmas);
+		model.addAttribute("turmas", turmas);
 		model.addAttribute("disciplinas", disciplinas);
 		model.addAttribute("professores", professores);		
-		
-		
 		
 		return "/alocacaoHorario/turmaregistrar";
 	
@@ -164,7 +112,7 @@ public class AlocacaoHorarioController {
 	
 	
 	/**
-	  * remove Turma id.  FUNCIONANDO!
+	  * remove Turma id.  
 	 */
 	@RequestMapping(value = { "/delete-turma-{id}" }, method = RequestMethod.GET)
 		public String deleteTurma(@PathVariable long id) {
@@ -173,7 +121,7 @@ public class AlocacaoHorarioController {
 		}
 	
     /**
-	 * View Update Turma
+	 * View Update Turma  
 	 */
 	@RequestMapping(value = { "/edit-turma-{id}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable long id, ModelMap model) {
@@ -190,8 +138,7 @@ public class AlocacaoHorarioController {
 	}
 
 	/**
-	 * Este método, chamado na submissão do form, manipula a requisição POST
-	 * para atualizar um usuário. Ele também valida os dados fornecidos.
+	 * Update Turma Post 
 	 */  
 	@RequestMapping(value = { "/edit-turma-{id}" }, method = RequestMethod.POST) //
 	public String updateUser(@Valid  @ModelAttribute Turma turma, BindingResult result, ModelMap model, @PathVariable long id, 
@@ -225,7 +172,6 @@ public class AlocacaoHorarioController {
 	/** Alocação Horario */
 	
 	 /** Menu Principal - Alocação de Horário */
-	
 		@RequestMapping(value = { "/alocaHorario" }, method = RequestMethod.GET)
 		public String listAlocaHorarioTurmas(ModelMap model) {
 
@@ -239,7 +185,7 @@ public class AlocacaoHorarioController {
 		}	
 	
 	/**
-	 * View para atualizar uma turma com alocaHorario.  FUNCIONANDO!
+	 * View para atualizar uma turma com alocacaoHorario.  
 	 */
 	@RequestMapping(value = { "/edit-turmaAlocaHorario-{id}" }, method = RequestMethod.GET)
 	public String editTurmaAlocaHorario(@PathVariable long id, ModelMap model) {
@@ -252,21 +198,20 @@ public class AlocacaoHorarioController {
 		model.addAttribute("alocacaoHorario",alocacaoHorario);
 		return "/alocacaoHorario/turmaalocahorario";
 	}
-	//Request Mapping (value = { "/edit-turmaAlocaHorario-{id}" }
-	//@Valid  @ModelAttribute Turma turma, BindingResult result,
-	@RequestMapping(value = { "/edit-turmaAlocaHorario" }, method = RequestMethod.POST)
+	
+	/*@RequestMapping(value = { "/edit-turmaAlocaHorario" }, method = RequestMethod.POST)
 	public String updateTurmaAlocaHorario(ModelMap model, @RequestParam String nomeTurma, 
 			@RequestParam String nomeProfessor) {
 		//Turma turma = alocaHorarioService.findTurmaById(id);
 		System.out.print(nomeProfessor);
 		
-		/*System.out.println("CHEGOU AQUI");
+		System.out.println("CHEGOU AQUI");
 		List<ItemHorario> itensHorario = alocaHorarioService.findAllItensHorario();
 		model.addAttribute("horas", itensHorario);
 		model.addAttribute("turma", turma);
-		model.addAttribute("edit", true);*/
+		model.addAttribute("edit", true);
 		return "/alocacaoHorario/turmaalocahorario2";
-	}
+	}*/
 	
 	/**
 	  * remove AlocacaoHorario id.  
@@ -276,6 +221,5 @@ public class AlocacaoHorarioController {
 		  alocaHorarioService.deleteAlocacaoHorario(id);
 		  return "redirect:/alocacaoHorario/alocaHorario/"; 
 		}
-	
 }
 	

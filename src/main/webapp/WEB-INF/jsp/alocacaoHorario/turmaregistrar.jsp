@@ -31,18 +31,7 @@
 				</div>
 			</div>
 
-	     <%--  <div class="row">
-				<div class="form-group col-md-12">
-					
-					<label class="col-md-3 control-lable" for="periodo">Periodo</label>
-				   <div class="col-md-7">
-					<form:select path="periodo" items="${turmas}" 
-							itemValue="periodo" itemLabel="periodo" class="form-control" />
-				  </div>
-			</div> 
-		  </div> --%>
-			
-			<div class="row">
+	     	<div class="row">
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="disciplina">Disciplina</label>
 					<div class="col-md-7">

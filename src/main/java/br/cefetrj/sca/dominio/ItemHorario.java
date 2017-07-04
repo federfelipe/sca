@@ -32,7 +32,6 @@ public class ItemHorario {
 		this.dia = dia;
 	}
 	
-	// Metodo adicionado
 	public ItemHorario(EnumDiaSemana dia, IntervaloTemporal tempoAula, int turno, int tempo) {
 		this(dia, tempoAula);
 		this.turno = turno;
@@ -55,24 +54,20 @@ public class ItemHorario {
 		return this.tempoAula.colide(item.tempoAula);
 	}
 	
-	// Metodo adicionado
 	public EnumDiaSemana getDia()
 	{
 		return this.dia;
 	}
 		
-	// Metodo adicionado
 	public void setDia(EnumDiaSemana dia)
 	{
 		this.dia = dia;
 	}
 	
-	// Metodo adicionado
 	public int getTurno(){
 		return this.turno;
 	}
 	
-	// Metodo adicionado
 	public int getTempo(){
 		return this.tempo;
 	}

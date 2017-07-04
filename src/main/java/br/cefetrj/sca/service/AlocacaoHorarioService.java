@@ -49,12 +49,10 @@ public class AlocacaoHorarioService {
 		return itensHorario;
 	}
 	
-	// Metodo adicionado
 	public List<Turma> findAllTurmas() {
 		return turmaRepositorio.findAll();
 	}
 	
-	// Metodo adicionado
 	public List<Disciplina> findAllDisciplinas() {
 		List<Turma> turmas = findAllTurmas();
 		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
@@ -66,17 +64,14 @@ public class AlocacaoHorarioService {
 		return disciplinas;
 	}
 	
-	// Metodo adicionado
 	public List<Professor> findAllProfessores() {
 		return professorRepositorio.findAll();
 	}
 	
-	// Metodo adicionado
 	public List<ItemHorario> findAllItensHorario() {
 		return itemHorarioRepositorio.findAll();
 	}
 	
-	// Metodo adicionado
 	/*public List<String> getAllHorasInicio() {
 		List<String> horasInicio = new ArrayList<String>();
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
@@ -88,7 +83,6 @@ public class AlocacaoHorarioService {
 		return horasInicio;
 	}*/
 	
-	// Metodo adicionado
 	/*public List<String> getAllHorasFim() {
 		List<String> horasFim = new ArrayList<String>();
 		List<ItemHorario> itensHorario = itemHorarioRepositorio.findAll();
@@ -100,12 +94,10 @@ public class AlocacaoHorarioService {
 		return horasFim;
 	}*/
 	
-	// Metodo adicionado
 	public List<String> getAllDiasSemana() {
 		return EnumDiaSemana.dias();
 	}
 	
-	// Metodo adicionado
 	public List<String> getAllDescricoesLocaisAula() {
 		List<LocalAula> locaisAula = localAulaRepositorio.findAll();
 		List<String> descricoes = new ArrayList<String>();
@@ -115,7 +107,6 @@ public class AlocacaoHorarioService {
 		return descricoes;
 	}
 	
-	// Metodo adicionado
 	public List<LocalAula> findAllLocaisAula() {
 		return localAulaRepositorio.findAll();
 	}
@@ -162,5 +153,4 @@ public class AlocacaoHorarioService {
 		AlocacaoHorario alocacaoHorario = alocacaoHorarioRepositorio.findAlocacaoHorarioById(id);
 		alocacaoHorarioRepositorio.delete(alocacaoHorario);
 	}
-	
 }

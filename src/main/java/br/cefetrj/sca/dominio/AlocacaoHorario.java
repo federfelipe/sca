@@ -43,7 +43,7 @@ public class AlocacaoHorario {
 	private AlocacaoHorario() {
 	}
 	
-/*	public AlocacaoHorario( Turma turmaId, ItemHorario itemHorarioInicio, ItemHorario itemHorarioFim ) {
+   /*public AlocacaoHorario( Turma turmaId, ItemHorario itemHorarioInicio, ItemHorario itemHorarioFim ) {
 		this.turmaId = turmaId;
 		this.itemHorarioInicio = itemHorarioInicio;
 		this.itemHorarioFim = itemHorarioFim;
@@ -76,6 +76,5 @@ public class AlocacaoHorario {
 	public void setItemHorarioFim( ItemHorario itemHorarioFim ) {
 		this.itemHorarioFim = itemHorarioFim;
 	}*/
-	
 
 }
